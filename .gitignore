@@ -1,0 +1,61 @@
+# ========== Unity Standard Ignore ==========
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Uu]serSettings/
+[Pp]ackages/com.unity.render-pipelines.high-definition/Editor/ShaderGraph/
+
+# ========== IDE & OS ==========
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.csproj
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.db
+.DS_Store
+Thumbs.db
+
+# ========== Generated Files ==========
+*.unitypackage
+*.apk
+*.aab
+*.ipa
+*.exe
+*.app
+*.msi
+*.mp4
+*.mov
+*.zip
+*.rar
+
+# ========== Unity Cache ==========
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uilds/
+[Pp]ackages/manifest.json.meta
+
+# ========== Visual Studio ==========
+.vs/
+*.obj
+*.exe
+*.dll
+*.pdb
+*.cache
+*.db
+*.bak
+
+# ========== Misc ==========
+/Logs/
+CrashReports/
