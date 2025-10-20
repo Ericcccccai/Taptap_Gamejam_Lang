@@ -36,6 +36,7 @@ public class playermove : MonoBehaviour
     }
 }*/
 
+/*
 using UnityEngine;
 
 public class playermove : MonoBehaviour
@@ -45,6 +46,15 @@ public class playermove : MonoBehaviour
 
     private Vector2 lastMoveDir = Vector2.right; // 默认朝右
 
+    public Rigidbody2D rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;        // Top-down 不受重力影响
+        rb.freezeRotation = true;   // 防止旋转
+    }
+    
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
@@ -63,6 +73,7 @@ public class playermove : MonoBehaviour
         }
 
         transform.Translate(moveInput * speed * Time.deltaTime);
+        
 
         // 更新 BugNet 位置
         UpdateBugNetPosition();
@@ -79,6 +90,68 @@ public class playermove : MonoBehaviour
     bugNet.localPosition = offset + (Vector3)(lastMoveDir * distance);
 }
 
+}*/
+
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerMove : MonoBehaviour
+{
+    [Header("移动设置")]
+    public float speed = 5.0f;
+
+    [Header("BugNet 设置")]
+    public Transform bugNet; // 拖入 BugNet 子物体
+    public float netDistance = 1f; // 网离身体的距离
+    public float netYOffset = 1f;    // 网的垂直偏移
+
+    private Vector2 moveInput;
+    private Vector2 lastMoveDir = Vector2.right; // 默认朝右
+    public Rigidbody2D rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;        // top-down 不需要重力
+        rb.freezeRotation = true;   // 防止旋转
+    }
+
+    void Update()
+    {
+        // 获取输入
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        // （可选）防止斜向移动 — 去掉即可允许斜走
+        if (moveX != 0) moveY = 0;
+
+        moveInput = new Vector2(moveX, moveY).normalized;
+
+        // 记录最后朝向
+        if (moveInput != Vector2.zero)
+        {
+            lastMoveDir = moveInput;
+        }
+
+        UpdateBugNetPosition();
+    }
+
+    void FixedUpdate()
+    {
+        // 用 Rigidbody2D 移动
+        Vector2 targetPos = rb.position + moveInput * speed * Time.fixedDeltaTime;
+        rb.MovePosition(targetPos);
+    }
+
+    void UpdateBugNetPosition()
+    {
+        if (bugNet == null) return;
+
+        // 根据朝向更新 BugNet 位置
+        Vector3 offset = new Vector3(0, netYOffset, 0);
+        bugNet.localPosition = offset + (Vector3)(lastMoveDir * netDistance);
+    }
+
     public Vector2 GetFacingDirection()
     {
         return lastMoveDir;
@@ -88,8 +161,7 @@ public class playermove : MonoBehaviour
     {
         return transform.position;
     }
-
-
-
 }
+
+
 

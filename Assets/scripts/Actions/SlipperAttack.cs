@@ -5,19 +5,19 @@ public class SlipperAttack : MonoBehaviour
     public GameObject slipperPrefab;
     public float throwForce = 10f;
 
-    private playermove playerMove;  // reference to player's movement
+    private PlayerMove playerMove;  // reference to player's movement
     private Transform bugNet;       // reference to the player's bug net
 
     void Start()
     {
-        playerMove = GetComponent<playermove>();
+        playerMove = GetComponent<PlayerMove>();
         if (playerMove == null)
         {
-            Debug.LogWarning("SlipperAttack: playermove script not found on player!");
+            Debug.LogWarning("SlipperAttack: PlayerMove script not found on player!");
         }
         else
         {
-            bugNet = playerMove.bugNet;  // directly get bugNet transform from playermove
+            bugNet = playerMove.bugNet;  // directly get bugNet transform from PlayerMove
         }
     }
 
