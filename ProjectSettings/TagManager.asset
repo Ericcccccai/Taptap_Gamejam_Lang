@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Is Trigger
+  - Level1Bug
+  - Level2Bug
+  - Level3Bug
+  - Bug
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Background
+  - Water
+  - UI
+  - Bug
+  - 
+  - 
+  - 
+  - confiner
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 1636663227
+    locked: 0
+  - name: Middle
+    uniqueID: 2496091457
+    locked: 0
+  - name: Front
+    uniqueID: 71198039
+    locked: 0
+  m_RenderingLayers:
+  - Default
